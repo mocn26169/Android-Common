@@ -19,10 +19,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class PackagerManagerActivity extends AppCompatActivity {
-    public static final int FILTER_ALL_APP = 0; // 所有应用程序
-    public static final int FILTER_SYSTEM_APP = 1; // 系统程序
-    public static final int FILTER_THIRD_APP = 2; // 第三方应用程序
-    public static final int FILTER_SDCARD_APP = 3; // 安装在SDCard的应用程序
+    // 所有应用程序
+    public static final int FILTER_ALL_APP = 0;
+    // 系统程序
+    public static final int FILTER_SYSTEM_APP = 1;
+    // 第三方应用程序
+    public static final int FILTER_THIRD_APP = 2;
+    // 安装在SDCard的应用程序
+    public static final int FILTER_SDCARD_APP = 3;
+
     private PackageManager pm;
 
     @Override
@@ -160,7 +165,7 @@ public class PackagerManagerActivity extends AppCompatActivity {
     }
 
     /**
-     * 获取所有程序的Activity
+     * 获取当前系统中安装的所有包
      */
     public void getInstalledPackages() {
         pm = this.getPackageManager();
