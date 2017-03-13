@@ -31,6 +31,7 @@ public class PackagerManagerActivity extends AppCompatActivity {
         filterApp(FILTER_THIRD_APP);
         Logout.e("安装在SDCard的应用程序");
         filterApp(FILTER_SDCARD_APP);
+
     }
 
     /**
