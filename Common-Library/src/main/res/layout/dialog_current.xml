@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+        <TextView
+            android:id="@+id/tv_current_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提示"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_current_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text=""
+        android:textColor="@color/gray700"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp" android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_current_submit"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="#CD2626"
+            android:text="@string/dialog_current_submit"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+        <Button
+            android:id="@+id/btn_current_cancel"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="#CD2626"
+            android:text="@string/dialog_current_cancel"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

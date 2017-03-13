@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Common-Library</string>
+    <string name="dialog_current_submit">确&#160;&#160;&#160;&#160;定</string>
+    <string name="dialog_current_cancel">取&#160;&#160;&#160;&#160;消</string>
+</resources>
