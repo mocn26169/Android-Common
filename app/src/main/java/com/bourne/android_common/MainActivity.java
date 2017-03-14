@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.bourne.android_common.IntentFilterDemo.IntentFilterActivity;
 import com.bourne.android_common.NetworkRequestDemo.NetworkRequestActivity;
 import com.bourne.android_common.PackageManagerDemo.PackagerManagerActivity;
+import com.bourne.android_common.ServiceDemo.ServiceActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toPackagerManagerActivity(null);
+        toIntentFilterActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -28,8 +30,16 @@ public class MainActivity extends AppCompatActivity {
         toActivity(this, NetworkRequestActivity.class);
     }
 
+    public void toServiceActivity(View view) {
+        toActivity(this, ServiceActivity.class);
+    }
+
     public void toPackagerManagerActivity(View view) {
         toActivity(this, PackagerManagerActivity.class);
+    }
+
+    public void toIntentFilterActivity(View view) {
+        toActivity(this, IntentFilterActivity.class);
     }
 
 

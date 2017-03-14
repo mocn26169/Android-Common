@@ -10,13 +10,13 @@ import android.content.pm.ProviderInfo;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.bourne.android_common.R;
 import com.bourne.common_library.utils.Logout;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class PackagerManagerActivity extends AppCompatActivity {
     // 所有应用程序
@@ -34,6 +34,16 @@ public class PackagerManagerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_packager_manager);
+
+        //获取该Activity对应的Intent的Action属性
+        String action=getIntent().getAction();
+        //显示Action属性
+        Logout.e("Action为："+action);
+        //获取该Activity对应的Intent的Category
+        Set<String> cates=getIntent().getCategories();
+        //显示Category属性
+        Logout.e("Category属性为："+cates);
+
 //        Logout.e("获取所有程序信息");
 //        getPackageInfo();
 //        Logout.e("根据包名获取应用信息");
