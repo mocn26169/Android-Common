@@ -11,6 +11,7 @@ import com.bourne.android_common.IntentFilterDemo.IntentFilterActivity;
 import com.bourne.android_common.NetworkRequestDemo.NetworkRequestActivity;
 import com.bourne.android_common.PackageManagerDemo.PackagerManagerActivity;
 import com.bourne.android_common.ServiceDemo.ServiceActivity;
+import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toIntentFilterActivity(null);
+        toCommomThreadActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void toIntentFilterActivity(View view) {
         toActivity(this, IntentFilterActivity.class);
+
+    }
+
+    public void toCommomThreadActivity(View view) {
+        toActivity(this, CommonThreadActivity.class);
     }
 
 
