@@ -52,6 +52,7 @@ public class HandlerThreadActivity extends AppCompatActivity {
             "http://img4.imgtn.bdimg.com/it/u=2845715753,1348257911&fm=23&gp=0.jpg",
             "http://img3.imgtn.bdimg.com/it/u=3634032659,2514353810&fm=23&gp=0.jpg"
     };
+
     private ImageView imageView;
     private HandlerThread handlerThread;
     private Thread loadImageThread;
