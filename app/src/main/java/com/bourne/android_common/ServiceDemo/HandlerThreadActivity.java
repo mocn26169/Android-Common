@@ -44,16 +44,18 @@ public class HandlerThreadActivity extends AppCompatActivity {
      * 图片地址集合
      */
     private String url[] = {
-            "http://img.blog.csdn.net/20160903083245762",
-            "http://img.blog.csdn.net/20160903083252184",
-            "http://img.blog.csdn.net/20160903083257871",
-            "http://img.blog.csdn.net/20160903083257871",
-            "http://img.blog.csdn.net/20160903083311972",
-            "http://img.blog.csdn.net/20160903083319668",
-            "http://img.blog.csdn.net/20160903083326871"
+            "http://img0.imgtn.bdimg.com/it/u=1597254274,1405139366&fm=23&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=3901634069,2243065451&fm=23&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1800624712,2677106110&fm=23&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2456066925,446683653&fm=23&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=565155430,1247415230&fm=23&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2845715753,1348257911&fm=23&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3634032659,2514353810&fm=23&gp=0.jpg"
     };
     private ImageView imageView;
     private HandlerThread handlerThread;
+    private Thread loadImageThread;
+    private int count = 0;
 
     /**
      * 处理UI
@@ -61,10 +63,9 @@ public class HandlerThreadActivity extends AppCompatActivity {
     Handler mainThreadHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Logout.e("次数:"+msg.what);
+            Logout.e("次数:" + msg.what);
             ImageBean imageBean = (ImageBean) msg.obj;
             imageView.setImageBitmap(imageBean.getBitmap());
-
         }
     };
 
@@ -76,11 +77,49 @@ public class HandlerThreadActivity extends AppCompatActivity {
         createHandlerThread();
     }
 
-    public void load(View view) {
-        Handler handlerThreadHandler = new Handler(handlerThread.getLooper(), new loadImageCallBack());
-        for (int i = 0; i < 5; i++) {
+    public void loadByHandlerThread(View view) {
+        Handler.Callback callBack = new loadImageCallBack();
+        Handler handlerThreadHandler = new Handler(handlerThread.getLooper(), callBack);
+        for (int i = 0; i < url.length; i++) {
             handlerThreadHandler.sendEmptyMessageDelayed(i, 1000 * i);
         }
+    }
+
+
+    public void loadByThread(View view) {
+        if (loadImageThread != null && !loadImageThread.isInterrupted()) {
+            loadImageThread.interrupt();
+        }
+        count = 0;
+        loadImageThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while (true) {
+                        Thread.sleep(1000);
+                        //在子线程中进行网络请求
+                        Bitmap bitmap = downloadUrlBitmap(url[count]);
+                        ImageBean imageBean = new ImageBean();
+                        imageBean.setBitmap(bitmap);
+                        imageBean.setUrl(url[count]);
+                        Message message = new Message();
+                        message.what = count;
+                        message.obj = imageBean;
+                        count++;
+                        mainThreadHandler.sendMessage(message);
+                        //最后一张时停止加载
+                        if (count >= url.length) {
+                            loadImageThread.interrupt();
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    Logout.e("加载完毕，停止线程");
+                }
+            }
+        });
+
+        loadImageThread.start();
     }
 
     /**
@@ -106,15 +145,16 @@ public class HandlerThreadActivity extends AppCompatActivity {
     /**
      * 创建一个HandlerThread
      */
+
     private void createHandlerThread() {
         //创建实例对象
         handlerThread = new HandlerThread("downloadImage");
         handlerThread.start();
-
     }
 
     /**
      * 下载图片
+     *
      * @param urlString
      * @return
      */
@@ -144,4 +184,9 @@ public class HandlerThreadActivity extends AppCompatActivity {
         return bitmap;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handlerThread.quit();
+    }
 }

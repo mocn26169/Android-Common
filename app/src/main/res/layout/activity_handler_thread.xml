@@ -11,8 +11,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="load"
-        android:text="开始下载图片"/>
+        android:onClick="loadByHandlerThread"
+        android:text="使用HandlerThread下载图片"
+        android:textAllCaps="false"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="loadByThread"
+        android:text="使用Thread下载图片"
+        android:textAllCaps="false"/>
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
