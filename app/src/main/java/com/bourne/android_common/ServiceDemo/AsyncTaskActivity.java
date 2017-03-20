@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.bourne.android_common.R;
-import com.bourne.common_library.utils.Logout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,9 +55,10 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
     @OnClick(R.id.startLoad)
     public void onClick(View view) {
-        clearTasks();
+//        clearTasks();
 
         LoadImageAsyncTask loadImageAsyncTask = new LoadImageAsyncTask(progressBar, img_center);
+
         //随机读取
 //        Random random = new Random();
 //        int index = url.length;
@@ -69,9 +69,16 @@ public class AsyncTaskActivity extends AppCompatActivity {
         int index = url.length;
         String path = url[count%index];
 
-        loadImageAsyncTask.execute(path);
+//        //单线程
+//        loadImageAsyncTask.execute(path);
+//        //单线程
+//        loadImageAsyncTask.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, path);
+        //多线程
+        loadImageAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, path);
+
         tasks.add(loadImageAsyncTask);
         count++;
+
     }
 
     /**
@@ -95,9 +102,4 @@ public class AsyncTaskActivity extends AppCompatActivity {
         clearTasks();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        clearTasks();
-    }
 }
