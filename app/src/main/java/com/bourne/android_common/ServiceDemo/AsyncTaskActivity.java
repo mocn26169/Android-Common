@@ -13,7 +13,6 @@ import com.bourne.common_library.utils.Logout;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +32,10 @@ public class AsyncTaskActivity extends AppCompatActivity {
             "http://img4.imgtn.bdimg.com/it/u=2845715753,1348257911&fm=23&gp=0.jpg",
             "http://img3.imgtn.bdimg.com/it/u=3634032659,2514353810&fm=23&gp=0.jpg"
     };
+
     private List<LoadImageAsyncTask> tasks = new ArrayList<LoadImageAsyncTask>();
+
+    private int count=0;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
@@ -57,16 +59,26 @@ public class AsyncTaskActivity extends AppCompatActivity {
         clearTasks();
 
         LoadImageAsyncTask loadImageAsyncTask = new LoadImageAsyncTask(progressBar, img_center);
-        Random random = new Random();
+        //随机读取
+//        Random random = new Random();
+//        int index = url.length;
+//        String path = url[random.nextInt(index)];
+//        Logout.e("path:" + path);
+
+        //按顺序读取
         int index = url.length;
-        String path = url[random.nextInt(index)];
-        Logout.e("path:" + path);
+        String path = url[count%index];
 
         loadImageAsyncTask.execute(path);
         tasks.add(loadImageAsyncTask);
+        count++;
     }
 
+    /**
+     * 清理所有任务
+     */
     private void clearTasks() {
+
         for (int i = 0; i < tasks.size(); i++) {
             AsyncTask asyncTask = tasks.get(i);
             if (asyncTask != null && asyncTask.getStatus() == AsyncTask.Status.RUNNING) {
@@ -75,5 +87,17 @@ public class AsyncTaskActivity extends AppCompatActivity {
             }
         }
         tasks.clear();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        clearTasks();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        clearTasks();
     }
 }
