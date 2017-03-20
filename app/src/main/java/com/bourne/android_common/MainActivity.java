@@ -10,6 +10,7 @@ import android.view.View;
 import com.bourne.android_common.IntentFilterDemo.IntentFilterActivity;
 import com.bourne.android_common.NetworkRequestDemo.NetworkRequestActivity;
 import com.bourne.android_common.PackageManagerDemo.PackagerManagerActivity;
+import com.bourne.android_common.ServiceDemo.AsyncTaskActivity;
 import com.bourne.android_common.ServiceDemo.HandlerThreadActivity;
 import com.bourne.android_common.ServiceDemo.ServiceActivity;
 import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toHandlerThreadActivity(null);
+        toAsyncTaskActivity(null);
 
     }
 
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void toHandlerThreadActivity(View view) {
         toActivity(this, HandlerThreadActivity.class);
+    }
+ public void toAsyncTaskActivity(View view) {
+        toActivity(this, AsyncTaskActivity.class);
     }
 
 

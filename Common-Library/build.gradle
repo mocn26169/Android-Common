@@ -44,4 +44,5 @@ dependencies {
     compile files('src/main/jniLibs/okio-1.10.0.jar')
     compile files('src/main/jniLibs/rxjava-1.2.1.jar')
     compile files('src/main/jniLibs/eventBus.jar')
+
 }
