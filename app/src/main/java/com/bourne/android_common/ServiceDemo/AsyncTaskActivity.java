@@ -34,7 +34,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
     private List<LoadImageAsyncTask> tasks = new ArrayList<LoadImageAsyncTask>();
 
-    private int count=0;
+    private int count = 0;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
@@ -67,11 +67,11 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
         //按顺序读取
         int index = url.length;
-        String path = url[count%index];
+        String path = url[count % index];
 
-//        //单线程
+        //单线程
 //        loadImageAsyncTask.execute(path);
-//        //单线程
+        //单线程
 //        loadImageAsyncTask.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, path);
         //多线程
         loadImageAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, path);
@@ -82,7 +82,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
     }
 
     /**
-     * 清理所有任务
+     * 取消所有任务
      */
     private void clearTasks() {
 

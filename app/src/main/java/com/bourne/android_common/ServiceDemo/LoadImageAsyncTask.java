@@ -37,11 +37,7 @@ public class LoadImageAsyncTask extends AsyncTask<String, Integer, Bitmap> {
 
     @Override
     protected Bitmap doInBackground(String... params) {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         //获取路径
         String path = params[0];
         //获取图片
@@ -63,7 +59,6 @@ public class LoadImageAsyncTask extends AsyncTask<String, Integer, Bitmap> {
         if (isCancelled()) {
             return;
         }
-
         //显示进度
         progressBar.setProgress(values[0]);
     }

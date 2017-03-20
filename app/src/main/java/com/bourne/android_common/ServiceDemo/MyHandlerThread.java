@@ -5,10 +5,9 @@
 //import android.os.Message;
 //
 ///**
-// * Handy class for starting a new thread that has a looper. The looper can then be
-// * used to create handler classes. Note that start() must still be called.
+// *
 // */
-//public class MyHandlerThread extends Thread {
+//public class HandlerThread extends Thread {
 //    /**
 //     * 线程优先级
 //     */

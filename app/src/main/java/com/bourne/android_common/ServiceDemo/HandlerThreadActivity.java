@@ -78,6 +78,10 @@ public class HandlerThreadActivity extends AppCompatActivity {
         createHandlerThread();
     }
 
+    /**
+     * 通过HandlerThread的方式加载
+     * @param view
+     */
     public void loadByHandlerThread(View view) {
         Handler.Callback callBack = new loadImageCallBack();
         Handler handlerThreadHandler = new Handler(handlerThread.getLooper(), callBack);
@@ -86,7 +90,10 @@ public class HandlerThreadActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * 通过Thread的方式加载
+     * @param view
+     */
     public void loadByThread(View view) {
         if (loadImageThread != null && !loadImageThread.isInterrupted()) {
             loadImageThread.interrupt();
@@ -103,10 +110,12 @@ public class HandlerThreadActivity extends AppCompatActivity {
                         ImageBean imageBean = new ImageBean();
                         imageBean.setBitmap(bitmap);
                         imageBean.setUrl(url[count]);
+
                         Message message = new Message();
                         message.what = count;
                         message.obj = imageBean;
                         count++;
+
                         mainThreadHandler.sendMessage(message);
                         //最后一张时停止加载
                         if (count >= url.length) {
@@ -124,7 +133,7 @@ public class HandlerThreadActivity extends AppCompatActivity {
     }
 
     /**
-     * 处理下载图片的
+     * 处理下载图片
      */
     class loadImageCallBack implements Handler.Callback {
 
@@ -135,9 +144,11 @@ public class HandlerThreadActivity extends AppCompatActivity {
             ImageBean imageBean = new ImageBean();
             imageBean.setBitmap(bitmap);
             imageBean.setUrl(url[msg.what]);
+
             Message message = new Message();
             message.what = msg.what;
             message.obj = imageBean;
+
             mainThreadHandler.sendMessage(message);
             return false;
         }
@@ -154,7 +165,7 @@ public class HandlerThreadActivity extends AppCompatActivity {
     }
 
     /**
-     * 下载图片
+     * 下载图片的网络请求
      *
      * @param urlString
      * @return
@@ -188,6 +199,7 @@ public class HandlerThreadActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //释放资源
         handlerThread.quit();
     }
 }
