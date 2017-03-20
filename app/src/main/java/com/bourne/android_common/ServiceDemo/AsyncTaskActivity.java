@@ -1,5 +1,6 @@
 package com.bourne.android_common.ServiceDemo;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.ProgressBar;
 import com.bourne.android_common.R;
 import com.bourne.common_library.utils.Logout;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
@@ -30,7 +33,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
             "http://img4.imgtn.bdimg.com/it/u=2845715753,1348257911&fm=23&gp=0.jpg",
             "http://img3.imgtn.bdimg.com/it/u=3634032659,2514353810&fm=23&gp=0.jpg"
     };
-
+    private List<LoadImageAsyncTask> tasks = new ArrayList<LoadImageAsyncTask>();
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
@@ -51,11 +54,26 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
     @OnClick(R.id.startLoad)
     public void onClick(View view) {
+        clearTasks();
+
         LoadImageAsyncTask loadImageAsyncTask = new LoadImageAsyncTask(progressBar, img_center);
         Random random = new Random();
         int index = url.length;
         String path = url[random.nextInt(index)];
         Logout.e("path:" + path);
+
         loadImageAsyncTask.execute(path);
+        tasks.add(loadImageAsyncTask);
+    }
+
+    private void clearTasks() {
+        for (int i = 0; i < tasks.size(); i++) {
+            AsyncTask asyncTask = tasks.get(i);
+            if (asyncTask != null && asyncTask.getStatus() == AsyncTask.Status.RUNNING) {
+                //cancel只是将对应的任务标记为取消状态
+                asyncTask.cancel(true);
+            }
+        }
+        tasks.clear();
     }
 }

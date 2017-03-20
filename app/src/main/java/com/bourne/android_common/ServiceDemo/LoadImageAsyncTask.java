@@ -59,7 +59,10 @@ public class LoadImageAsyncTask extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-//        Logout.e("onProgressUpdate:" + values[0]);
+        if(isCancelled()){//通过isCancelled()判断任务任务是否被取消
+            return;
+        }
+
         //显示进度
         progressBar.setProgress(values[0]);
     }
@@ -81,8 +84,11 @@ public class LoadImageAsyncTask extends AsyncTask<String, Integer, Bitmap> {
 
             //这里只是为了演示更新进度的功能，实际的进度值需要在从输入流中读取时逐步获取
             for(int i = 0; i < 100; i++){
+                if(isCancelled()){//通过isCancelled()判断任务任务是否被取消
+                    break;
+                }
                 publishProgress(i);
-                Thread.sleep(100);//为了看清效果，睡眠一段时间
+                Thread.sleep(20);//为了看清效果，睡眠一段时间
             }
 
             //实际项目中如何获取文件大小作为进度值及更新进度值
