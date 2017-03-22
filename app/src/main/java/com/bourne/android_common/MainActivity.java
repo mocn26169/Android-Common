@@ -13,6 +13,7 @@ import com.bourne.android_common.PackageManagerDemo.PackagerManagerActivity;
 import com.bourne.android_common.ServiceDemo.AsyncTaskActivity;
 import com.bourne.android_common.ServiceDemo.HandlerThreadActivity;
 import com.bourne.android_common.ServiceDemo.ServiceActivity;
+import com.bourne.android_common.ServiceDemo.ThreadPoolExecutorActivity;
 import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toAsyncTaskActivity(null);
-
+        toThreadPoolExecutorActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
  public void toAsyncTaskActivity(View view) {
         toActivity(this, AsyncTaskActivity.class);
+    }
+
+ public void toThreadPoolExecutorActivity(View view) {
+        toActivity(this, ThreadPoolExecutorActivity.class);
     }
 
 
