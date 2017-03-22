@@ -47,7 +47,6 @@ public class ThreadManager {
         private int corePoolSize;
         private int maximumPoolSize;
         private long keepAliveTime = 0; // 限制线程的的最大存活时间
-        private final int BLOCK_SIZE = 2;//阻塞队列大小
         public ThreadPool(int corePoolSize, int maximumPoolSize, long keepAliveTime)
         {
             super();
