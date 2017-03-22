@@ -24,7 +24,7 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread_pool_executor);
         // 创建线程池
-        // 创建一个核心线程数为3、最大线程数为8，缓存队列大小为5的线程池
+        // 创建一个核心线程数为1、最大线程数为3，缓存队列大小为2的线程池
         executorPool = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,
                 TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(BLOCK_SIZE),
                 Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
@@ -35,11 +35,17 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
         for (int num = 0; num < 6; num++) {//每个500ms添加一个任务到队列中
             try {
                 Li("execute");// 监听相关数据
-                executorPool.execute(new WorkerThread("thread-" + num));
+                executorPool.execute(new WorkerThread("卖票人" + num+"号"));
             } catch (Exception e) {
                 Log.e("threadtest", "AbortPolicy...");
             }
         }
+//        try {
+//            Li("execute");// 监听相关数据
+//            executorPool.execute(new WorkerThread("卖票人" + 1+"号"));
+//        } catch (Exception e) {
+//            Log.e("threadtest", "AbortPolicy...");
+//        }
 
         // 20s后，所有任务已经执行完毕，我们在监听一下相关数据
         new Thread(new Runnable() {
@@ -83,8 +89,8 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
                 while (flag) {
                     Thread.sleep(1000);
                     i++;
-                    Log.e("threadtest", "WorkerThread " + threadName + "  " + i);
-                    if (i > 2) flag = false;
+                    Log.e("threadtest", "卖票中:" + threadName + "  数量：" + i);
+                    if (i >= 3) flag = false;
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
