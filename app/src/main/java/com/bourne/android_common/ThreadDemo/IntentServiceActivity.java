@@ -1,4 +1,4 @@
-package com.bourne.android_common.ServiceDemo;
+package com.bourne.android_common.ThreadDemo;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,12 +12,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bourne.android_common.R;
+import com.bourne.android_common.ServiceDemo.MyIntentService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class IntentServiceActivity extends AppCompatActivity {
+
     /**
      * 状态文字
      */

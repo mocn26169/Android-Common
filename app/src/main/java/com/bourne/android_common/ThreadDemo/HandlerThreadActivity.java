@@ -1,4 +1,4 @@
-package com.bourne.android_common.ServiceDemo;
+package com.bourne.android_common.ThreadDemo;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,6 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HandlerThreadActivity extends AppCompatActivity {
+
     class ImageBean {
         private String url;
         private Bitmap bitmap;
@@ -76,6 +77,15 @@ public class HandlerThreadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_handler_thread);
         imageView = (ImageView) findViewById(R.id.imageView);
         createHandlerThread();
+    }
+
+    /**
+     * 创建一个HandlerThread
+     */
+    private void createHandlerThread() {
+        //创建实例对象
+        handlerThread = new HandlerThread("downloadImage");
+        handlerThread.start();
     }
 
     /**
@@ -154,15 +164,7 @@ public class HandlerThreadActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * 创建一个HandlerThread
-     */
 
-    private void createHandlerThread() {
-        //创建实例对象
-        handlerThread = new HandlerThread("downloadImage");
-        handlerThread.start();
-    }
 
     /**
      * 下载图片的网络请求

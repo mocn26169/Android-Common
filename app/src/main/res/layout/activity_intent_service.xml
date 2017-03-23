@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.bourne.android_common.ServiceDemo.IntentServiceActivity">
+    tools:context="com.bourne.android_common.ThreadDemo.IntentServiceActivity">
 
     <Button
         android:id="@+id/btn_start"

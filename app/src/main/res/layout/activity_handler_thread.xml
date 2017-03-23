@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.bourne.android_common.ServiceDemo.HandlerThreadActivity">
+    tools:context="com.bourne.android_common.ThreadDemo.HandlerThreadActivity">
 
     <Button
         android:layout_width="wrap_content"

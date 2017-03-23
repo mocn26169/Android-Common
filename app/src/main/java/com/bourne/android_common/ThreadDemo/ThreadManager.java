@@ -1,4 +1,4 @@
-package com.bourne.android_common.ServiceDemo;
+package com.bourne.android_common.ThreadDemo;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;

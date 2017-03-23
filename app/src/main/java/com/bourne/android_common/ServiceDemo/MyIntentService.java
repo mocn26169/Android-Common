@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 
+import com.bourne.android_common.ThreadDemo.IntentServiceActivity;
 import com.bourne.common_library.utils.Logout;
 
 public class MyIntentService extends IntentService {

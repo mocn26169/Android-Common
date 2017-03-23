@@ -60,11 +60,11 @@
         </activity>
         <activity android:name=".ThreadDemo.CommonThreadActivity">
         </activity>
-        <activity android:name=".ServiceDemo.HandlerThreadActivity">
+        <activity android:name=".ThreadDemo.HandlerThreadActivity">
         </activity>
-        <activity android:name=".ServiceDemo.AsyncTaskActivity">
+        <activity android:name=".ThreadDemo.AsyncTaskActivity">
         </activity>
-        <activity android:name=".ServiceDemo.ThreadPoolExecutorActivity">
+        <activity android:name=".ThreadDemo.ThreadPoolExecutorActivity">
         </activity>
     </application>
 

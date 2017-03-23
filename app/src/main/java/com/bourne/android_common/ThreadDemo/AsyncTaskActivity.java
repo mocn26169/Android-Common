@@ -1,4 +1,4 @@
-package com.bourne.android_common.ServiceDemo;
+package com.bourne.android_common.ThreadDemo;
 
 import android.os.AsyncTask;
 import android.os.Bundle;

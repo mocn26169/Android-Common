@@ -10,10 +10,10 @@ import android.view.View;
 import com.bourne.android_common.IntentFilterDemo.IntentFilterActivity;
 import com.bourne.android_common.NetworkRequestDemo.NetworkRequestActivity;
 import com.bourne.android_common.PackageManagerDemo.PackagerManagerActivity;
-import com.bourne.android_common.ServiceDemo.AsyncTaskActivity;
-import com.bourne.android_common.ServiceDemo.HandlerThreadActivity;
+import com.bourne.android_common.ThreadDemo.AsyncTaskActivity;
+import com.bourne.android_common.ThreadDemo.HandlerThreadActivity;
 import com.bourne.android_common.ServiceDemo.ServiceActivity;
-import com.bourne.android_common.ServiceDemo.ThreadPoolExecutorActivity;
+import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
 import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
 
 public class MainActivity extends AppCompatActivity {
