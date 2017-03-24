@@ -9,6 +9,8 @@ import com.bourne.android_common.R;
 
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -69,7 +71,8 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
 //                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
         //AsyncTask
-        AsyTask();
+//        AsyTask();
+        imageloader();
         try {
             for (int i = 0; i < count; i++) {
 //                ThreadManager.getThreadPool().execute(new WorkerThread("歌曲" + i));
@@ -102,6 +105,11 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
     }
 
 
+    private void imageloader() {
+                executorPool = new ThreadPoolExecutor(0, 1, 60L,
+                TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(),
+                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+    }
     private void AsyTask() {
         BlockingQueue<Runnable> sPoolWorkQueue =
                 new LinkedBlockingQueue<Runnable>(10);
