@@ -11,5 +11,5 @@
         android:textAllCaps="false"
         android:layout_weight="1"
         android:onClick="begin"
-        android:text="点击增加一个售票窗口"/>
+        android:text="点击下载一首歌曲"/>
 </LinearLayout>

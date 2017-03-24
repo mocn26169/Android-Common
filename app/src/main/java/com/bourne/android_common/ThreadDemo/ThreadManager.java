@@ -8,8 +8,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * 线程管理者。
  *
- * @author H_lang
- *
  */
 public class ThreadManager {
     private static ThreadPool threadPool; // 单列的线程池对象。
