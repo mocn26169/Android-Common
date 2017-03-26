@@ -8,6 +8,7 @@ import android.view.View;
 import com.bourne.android_common.R;
 
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -46,8 +47,12 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
      * @param view
      */
     public void begin(View view) {
-        int count = 30;
+        int count = 8;
 //-------------------AbortPolicy
+        executorPool = new ThreadPoolExecutor(1, 1, 10,
+                TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(),
+                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+        executorPool.allowCoreThreadTimeOut(true);
 
         //new LinkedBlockingDeque<Runnable>() + AbortPolicy
         //和newFixedThreadPool、newSingleThreadExecutor一样
@@ -58,8 +63,10 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
 
         //new LinkedBlockingDeque<Runnable>(2) + AbortPolicy
         //new ArrayBlockingQueue<Runnable>(2) + AbortPolicy
-        //数量6，4个线程，一批4个，一批2个。
-        //数量10，5个线程，只下载了前面7个，3个忽略，1个报错
+        //任务数量6，4个线程，一批4个，一批2个。
+        //任务数量7，5个线程，一批5个，一批2个 最大容纳是7个，当核心线程+队列的数量放不下的时候，就开始启用第5个
+        //任务数量8，5个线程，只下载了前面7个，最后1个忽略
+        //任务数量10，5个线程，只下载了前面7个，最后3个忽略
 //        executorPool = new ThreadPoolExecutor(4, 5, 10,
 //                TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2),
 //                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
@@ -72,7 +79,7 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
 
         //AsyncTask
 //        AsyTask();
-        imageloader();
+//        imageloader();
         try {
             for (int i = 0; i < count; i++) {
 //                ThreadManager.getThreadPool().execute(new WorkerThread("歌曲" + i));
@@ -89,27 +96,43 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
 //            Log.e("threadtest", "歌曲" + songIndex + "下载失败...");
 //        }
 
-        // 所有任务已经执行完毕，我们在监听一下相关数据
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Thread.sleep(20 * 1000);
-//                } catch (Exception e) {
-//
-//                }
-//                Li("monitor after");
-//            }
-//        }).start();
+//         所有任务已经执行完毕，我们在监听一下相关数据
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(20 * 1000);
+                } catch (Exception e) {
 
+                }
+                Li("monitor after");
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5 * 1000);
+                } catch (Exception e) {
+
+                }
+                Li("monitor after");
+            }
+        }).start();
     }
 
 
     private void imageloader() {
-                executorPool = new ThreadPoolExecutor(0, 1, 60L,
+        // 为什么corePoolSize要设置为0？？？
+        executorPool = new ThreadPoolExecutor(0, 1, 60L,
                 TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(),
                 Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+
+//        executorPool = new ThreadPoolExecutor(1, 1, 60L,
+//                TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(),
+//                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
     }
+
     private void AsyTask() {
         BlockingQueue<Runnable> sPoolWorkQueue =
                 new LinkedBlockingQueue<Runnable>(10);
@@ -153,7 +176,7 @@ public class ThreadPoolExecutorActivity extends AppCompatActivity {
                     //模拟耗时操作
                     Random random = new Random();
 //                    long time = (random.nextInt(5) + 1) * 1000;
-                    long time = 5000;
+                    long time = 1000;
                     Thread.sleep(time);
                     Log.e("threadtest", "线程\"" + tn + "\"耗时了(" + time / 1000 + "秒)下载了第<" + threadName + ">");
                     //下载完了跳出循环
