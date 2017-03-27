@@ -1,9 +1,3 @@
-/*
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
 package java.util.concurrent;
 
 import java.security.AccessControlContext;
@@ -17,31 +11,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import sun.security.util.SecurityConstants;
 
-
-/**
- * Factory and utility methods for {@link Executor}, {@link
- * ExecutorService}, {@link ScheduledExecutorService}, {@link
- * ThreadFactory}, and {@link Callable} classes defined in this
- * package. This class supports the following kinds of methods:
- *
- * <ul>
- *   <li>Methods that create and return an {@link ExecutorService}
- *       set up with commonly useful configuration settings.
- *   <li>Methods that create and return a {@link ScheduledExecutorService}
- *       set up with commonly useful configuration settings.
- *   <li>Methods that create and return a "wrapped" ExecutorService, that
- *       disables reconfiguration by making implementation-specific methods
- *       inaccessible.
- *   <li>Methods that create and return a {@link ThreadFactory}
- *       that sets newly created threads to a known state.
- *   <li>Methods that create and return a {@link Callable}
- *       out of other closure-like forms, so they can be used
- *       in execution methods requiring {@code Callable}.
- * </ul>
- *
- * @since 1.5
- * @author Doug Lea
- */
 public class Executors {
 
     /**
@@ -398,10 +367,10 @@ public class Executors {
         return new PrivilegedCallableUsingCurrentClassLoader<T>(callable);
     }
 
-    // Non-public classes supporting the public methods
+    // 支持公共方式的非公共类
 
     /**
-     * A callable that runs given task and returns given result.
+     * 运行给定任务并返回给定结果的Callable
      */
     private static final class RunnableAdapter<T> implements Callable<T> {
         private final Runnable task;
@@ -417,7 +386,7 @@ public class Executors {
     }
 
     /**
-     * A callable that runs under established access control settings.
+     * 可以在已建立的访问控制设置下运行的callable
      */
     private static final class PrivilegedCallable<T> implements Callable<T> {
         final Callable<T> task;
@@ -443,8 +412,7 @@ public class Executors {
     }
 
     /**
-     * A callable that runs under established access control settings and
-     * current ClassLoader.
+     * 一个可在所建立的访问控制设置和当前ClassLoader下运行的callable
      */
     private static final class PrivilegedCallableUsingCurrentClassLoader<T>
             implements Callable<T> {
@@ -456,13 +424,10 @@ public class Executors {
             // BEGIN android-removed
             // SecurityManager sm = System.getSecurityManager();
             // if (sm != null) {
-            //     // Calls to getContextClassLoader from this class
-            //     // never trigger a security check, but we check
-            //     // whether our callers have this permission anyways.
+         //   从这个类调用getContextClassLoader不会触发安全检查，但是我们检查我们的调用者是否拥有此权限。
             //     sm.checkPermission(SecurityConstants.GET_CLASSLOADER_PERMISSION);
 
-            //     // Whether setContextClassLoader turns out to be necessary
-            //     // or not, we fail fast if permission is not available.
+//            是否将setContextClassLoader证明是必要的，如果权限不可用，我们会快速失败
             //     sm.checkPermission(new RuntimePermission("setContextClassLoader"));
             // }
             // END android-removed
@@ -538,12 +503,10 @@ public class Executors {
             // BEGIN android-removed
             // SecurityManager sm = System.getSecurityManager();
             // if (sm != null) {
-            //     // Calls to getContextClassLoader from this class
-            //     // never trigger a security check, but we check
-            //     // whether our callers have this permission anyways.
+//            从这个类调用getContextClassLoader不会触发安全检查，但是我们检查我们的调用者是否拥有此权限
             //     sm.checkPermission(SecurityConstants.GET_CLASSLOADER_PERMISSION);
 
-            //     // Fail fast
+            //     // 失败快
             //     sm.checkPermission(new RuntimePermission("setContextClassLoader"));
             // }
             // END android-removed
@@ -646,6 +609,6 @@ public class Executors {
         }
     }
 
-    /** Cannot instantiate. */
+    /** 不能被实例化 */
     private Executors() {}
 }
