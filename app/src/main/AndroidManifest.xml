@@ -66,6 +66,8 @@
         </activity>
         <activity android:name=".ThreadDemo.ThreadPoolExecutorActivity">
         </activity>
+        <activity android:name=".ThreadDemo.ThreadActivity">
+        </activity>
     </application>
 
 </manifest>

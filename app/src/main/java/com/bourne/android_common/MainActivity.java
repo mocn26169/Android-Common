@@ -10,11 +10,12 @@ import android.view.View;
 import com.bourne.android_common.IntentFilterDemo.IntentFilterActivity;
 import com.bourne.android_common.NetworkRequestDemo.NetworkRequestActivity;
 import com.bourne.android_common.PackageManagerDemo.PackagerManagerActivity;
-import com.bourne.android_common.ThreadDemo.AsyncTaskActivity;
-import com.bourne.android_common.ThreadDemo.HandlerThreadActivity;
 import com.bourne.android_common.ServiceDemo.ServiceActivity;
-import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
+import com.bourne.android_common.ThreadDemo.AsyncTaskActivity;
 import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
+import com.bourne.android_common.ThreadDemo.HandlerThreadActivity;
+import com.bourne.android_common.ThreadDemo.ThreadActivity;
+import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toThreadPoolExecutorActivity(null);
+        toThreadActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -60,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
  public void toThreadPoolExecutorActivity(View view) {
         toActivity(this, ThreadPoolExecutorActivity.class);
+    }
+ public void toThreadActivity(View view) {
+        toActivity(this, ThreadActivity.class);
     }
 
 
