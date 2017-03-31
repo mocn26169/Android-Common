@@ -16,6 +16,7 @@ import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
 import com.bourne.android_common.ThreadDemo.HandlerThreadActivity;
 import com.bourne.android_common.ThreadDemo.ThreadActivity;
 import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
+import com.bourne.android_common.WindowDemo.WindowManagerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toThreadActivity(null);
+        toWindowManagerActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -64,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
     }
  public void toThreadActivity(View view) {
         toActivity(this, ThreadActivity.class);
+    }
+
+ public void toWindowManagerActivity(View view) {
+        toActivity(this, WindowManagerActivity.class);
     }
 
 
