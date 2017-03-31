@@ -52,6 +52,7 @@ import java.util.Objects;
  */
 public interface WindowManager extends ViewManager {
 
+
     /** @hide */
     int DOCKED_INVALID = -1;
     /** @hide */
