@@ -1228,7 +1228,7 @@ public interface WindowManager extends ViewManager {
         public static final int SOFT_INPUT_ADJUST_NOTHING = 0x30;
 
         /**
-         {@link #softInputMode}的位：当用户向前浏览窗口时设置。
+        #softInputMode的位：当用户向前浏览窗口时设置。
          这通常由系统自动为您设置，尽管您可能希望在某些情况下自己设置窗口。
          窗口显示后，此标志将自动清除。
          */
