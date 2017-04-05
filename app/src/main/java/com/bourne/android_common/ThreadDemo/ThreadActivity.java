@@ -1,8 +1,7 @@
 package com.bourne.android_common.ThreadDemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.bourne.android_common.R;
@@ -31,7 +30,7 @@ public class ThreadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread);
         textView = (TextView) findViewById(R.id.textView);
-        WindowManager
+
 //        thread = new Thread(new Runnable() {
 //            @Override
 //            public void run() {
