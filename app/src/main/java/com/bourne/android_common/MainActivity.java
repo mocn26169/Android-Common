@@ -15,6 +15,7 @@ import com.bourne.android_common.ThreadDemo.AsyncTaskActivity;
 import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
 import com.bourne.android_common.ThreadDemo.HandlerThreadActivity;
 import com.bourne.android_common.ThreadDemo.ThreadActivity;
+import com.bourne.android_common.ThreadDemo.ThreadPoolCanStopActivity;
 import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
 import com.bourne.android_common.WindowDemo.WindowManagerActivity;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toWindowManagerActivity(null);
+        toThreadPoolCanStopActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -56,19 +57,25 @@ public class MainActivity extends AppCompatActivity {
     public void toHandlerThreadActivity(View view) {
         toActivity(this, HandlerThreadActivity.class);
     }
- public void toAsyncTaskActivity(View view) {
+
+    public void toAsyncTaskActivity(View view) {
         toActivity(this, AsyncTaskActivity.class);
     }
 
- public void toThreadPoolExecutorActivity(View view) {
+    public void toThreadPoolExecutorActivity(View view) {
         toActivity(this, ThreadPoolExecutorActivity.class);
     }
- public void toThreadActivity(View view) {
+
+    public void toThreadActivity(View view) {
         toActivity(this, ThreadActivity.class);
     }
 
- public void toWindowManagerActivity(View view) {
+    public void toWindowManagerActivity(View view) {
         toActivity(this, WindowManagerActivity.class);
+    }
+
+    public void toThreadPoolCanStopActivity(View view) {
+        toActivity(this, ThreadPoolCanStopActivity.class);
     }
 
 

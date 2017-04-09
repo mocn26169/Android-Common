@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
     <application
         android:name=".APPApplication"
         android:allowBackup="true"
@@ -69,6 +70,8 @@
         <activity android:name=".ThreadDemo.ThreadActivity">
         </activity>
         <activity android:name=".WindowDemo.WindowManagerActivity">
+        </activity>
+        <activity android:name=".ThreadDemo.ThreadPoolCanStopActivity">
         </activity>
     </application>
 

@@ -31,7 +31,7 @@ public class ThreadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread);
         textView = (TextView) findViewById(R.id.textView);
-        WindowManager
+
 //        thread = new Thread(new Runnable() {
 //            @Override
 //            public void run() {
