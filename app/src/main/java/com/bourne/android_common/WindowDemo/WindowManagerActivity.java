@@ -1,5 +1,6 @@
 package com.bourne.android_common.WindowDemo;
 
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +29,15 @@ public class WindowManagerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_window_manager);
+
+//        ImageView m = new ImageView(this);
+//        m.setBackgroundColor(Color.BLUE);
+//         getWindow().addContentView(m, new
+//         ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,200));
+//        WindowManager.LayoutParams wl = new WindowManager.LayoutParams();
+//        wl.height = 400;
+//        wl.width = WindowManager.LayoutParams.MATCH_PARENT;
+//        getWindowManager().addView(m, wl);
     }
 
     public void createFloatView(View view) {

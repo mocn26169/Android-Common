@@ -1,8 +1,7 @@
 package com.bourne.android_common.ThreadDemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.bourne.android_common.R;
