@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toWindowManagerActivity(null);
+        toNetworkRequestActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void toIntentFilterActivity(View view) {
         toActivity(this, IntentFilterActivity.class);
-
     }
 
     public void toCommomThreadActivity(View view) {
@@ -56,18 +55,20 @@ public class MainActivity extends AppCompatActivity {
     public void toHandlerThreadActivity(View view) {
         toActivity(this, HandlerThreadActivity.class);
     }
- public void toAsyncTaskActivity(View view) {
+
+    public void toAsyncTaskActivity(View view) {
         toActivity(this, AsyncTaskActivity.class);
     }
 
- public void toThreadPoolExecutorActivity(View view) {
+    public void toThreadPoolExecutorActivity(View view) {
         toActivity(this, ThreadPoolExecutorActivity.class);
     }
- public void toThreadActivity(View view) {
+
+    public void toThreadActivity(View view) {
         toActivity(this, ThreadActivity.class);
     }
 
- public void toWindowManagerActivity(View view) {
+    public void toWindowManagerActivity(View view) {
         toActivity(this, WindowManagerActivity.class);
     }
 

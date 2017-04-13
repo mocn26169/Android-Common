@@ -7,9 +7,24 @@ import com.bourne.android_common.R;
 
 public class NetworkRequestActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_network_request);
     }
+
+    private void downloadText(){
+
+    }
+
+    private void downloadBitmap(){
+
+    }
+
+    private void downloadFile(){
+
+    }
+
+
 }
