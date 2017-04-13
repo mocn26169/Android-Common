@@ -3,6 +3,8 @@ package com.bourne.android_common.WindowDemo;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -14,7 +16,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bourne.android_common.R;
+import com.bourne.common_library.utils.Logout;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -30,6 +36,18 @@ public class WindowManagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_window_manager);
 
+
+        Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Logout.e("handler");
+            }
+        };
+
+        handler.sendEmptyMessage(0);
+
+        Logout.e("onCreate");
 //        ImageView m = new ImageView(this);
 //        m.setBackgroundColor(Color.BLUE);
 //         getWindow().addContentView(m, new
@@ -38,6 +56,18 @@ public class WindowManagerActivity extends AppCompatActivity {
 //        wl.height = 400;
 //        wl.width = WindowManager.LayoutParams.MATCH_PARENT;
 //        getWindowManager().addView(m, wl);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Logout.e("onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Logout.e("onResume");
     }
 
     public void createFloatView(View view) {

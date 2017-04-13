@@ -15,7 +15,6 @@ import com.bourne.android_common.ThreadDemo.AsyncTaskActivity;
 import com.bourne.android_common.ThreadDemo.CommonThreadActivity;
 import com.bourne.android_common.ThreadDemo.HandlerThreadActivity;
 import com.bourne.android_common.ThreadDemo.ThreadActivity;
-import com.bourne.android_common.ThreadDemo.ThreadPoolCanStopActivity;
 import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
 import com.bourne.android_common.WindowDemo.WindowManagerActivity;
 
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toThreadPoolCanStopActivity(null);
+        toNetworkRequestActivity(null);
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void toIntentFilterActivity(View view) {
         toActivity(this, IntentFilterActivity.class);
-
     }
 
     public void toCommomThreadActivity(View view) {
@@ -72,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void toWindowManagerActivity(View view) {
         toActivity(this, WindowManagerActivity.class);
-    }
-
-    public void toThreadPoolCanStopActivity(View view) {
-        toActivity(this, ThreadPoolCanStopActivity.class);
     }
 
 
