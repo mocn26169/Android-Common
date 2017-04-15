@@ -19,6 +19,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|locale"
+            android:screenOrientation="portrait"
             android:excludeFromRecents="true">
             <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.MAIN"/>

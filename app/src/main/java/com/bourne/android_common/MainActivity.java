@@ -17,19 +17,59 @@ import com.bourne.android_common.ThreadDemo.HandlerThreadActivity;
 import com.bourne.android_common.ThreadDemo.ThreadActivity;
 import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
 import com.bourne.android_common.WindowDemo.WindowManagerActivity;
+import com.bourne.common_library.utils.Logout;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Logout.e("onCreate");
         setContentView(R.layout.activity_main);
-        toNetworkRequestActivity(null);
+//        toNetworkRequestActivity(null);
+        if(null != savedInstanceState)
+        {
+            int IntTest = savedInstanceState.getInt("IntTest");
+            Logout.e("IntTest="+IntTest);
+
+        }
+
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        Logout.e("onSaveInstanceState");
+        outState.putInt("IntTest", 10002);
+        super.onSaveInstanceState(outState);
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Logout.e("onRestoreInstanceState");
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Logout.e("onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Logout.e("onStop");
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
         Intent intent = new Intent(_context, _class);
         startActivity(intent);
+    }
+
+    public void click(View view) {
+        toNetworkRequestActivity(null);
     }
 
     public void toNetworkRequestActivity(View view) {
