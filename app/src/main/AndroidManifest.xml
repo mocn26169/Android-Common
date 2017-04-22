@@ -20,14 +20,15 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|locale"
-            android:screenOrientation="portrait"
-            android:excludeFromRecents="true">
+            android:excludeFromRecents="false"
+            android:screenOrientation="portrait">
             <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity android:name=".PackageManagerDemo.PackagerManagerActivity">
             <intent-filter android:priority="0">
                 <action android:name="com.bourne.ACTION_PACKAGEMANAGER"/>
@@ -42,7 +43,11 @@
                 </data>
             </intent-filter>
         </activity>
-        <activity android:name=".NetworkRequestDemo.NetworkRequestActivity">
+
+        <activity
+            android:name=".NetworkRequestDemo.NetworkRequestActivity"
+            android:launchMode="singleInstance"
+            android:taskAffinity="">
             <intent-filter android:priority="-1000">
                 <action android:name="com.bourne.ACTION_PACKAGEMANAGER"/>
 
@@ -53,9 +58,7 @@
         </activity>
 
         <service
-            android:name=".ServiceDemo.MyService"
-            android:enabled="true"
-            android:exported="true">
+            android:name=".ServiceDemo.MyService">
         </service>
 
         <activity android:name=".ServiceDemo.ServiceActivity">

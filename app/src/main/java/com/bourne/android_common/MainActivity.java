@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.bourne.android_common.IntentFilterDemo.IntentFilterActivity;
@@ -19,14 +20,17 @@ import com.bourne.android_common.ThreadDemo.ThreadPoolExecutorActivity;
 import com.bourne.android_common.WindowDemo.WindowManagerActivity;
 import com.bourne.common_library.utils.Logout;
 
+import static android.R.attr.data;
+import static com.bourne.android_common.R.id.textView;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logout.e("onCreate");
+//        Logout.e("onCreate");
         setContentView(R.layout.activity_main);
-//        toNetworkRequestActivity(null);
+        toServiceActivity(null);
         if(null != savedInstanceState)
         {
             int IntTest = savedInstanceState.getInt("IntTest");
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        Logout.e("onSaveInstanceState");
+//        Logout.e("onSaveInstanceState");
         outState.putInt("IntTest", 10002);
         super.onSaveInstanceState(outState);
     }
@@ -47,20 +51,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        Logout.e("onRestoreInstanceState");
+//        Logout.e("onRestoreInstanceState");
         super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Logout.e("onPause");
+//        Logout.e("onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Logout.e("onStop");
+//        Logout.e("onStop");
     }
 
     private void toActivity(Context _context, Class<? extends Activity> _class) {
@@ -111,6 +115,20 @@ public class MainActivity extends AppCompatActivity {
     public void toWindowManagerActivity(View view) {
         toActivity(this, WindowManagerActivity.class);
     }
+
+
+    /**
+     * Standard activity result: operation canceled.
+     */
+    public static final int RESULT_CANCELED = 0;
+    /**
+     * Standard activity result: operation succeeded.
+     */
+    public static final int RESULT_OK = -1;
+    /**
+     * Start of user-defined activity results.
+     */
+    public static final int RESULT_FIRST_USER = 1;
 
 
 }
