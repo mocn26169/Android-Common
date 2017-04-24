@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:sharedUserId="bourne.myid"
           package="com.bourne.android_common">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -9,6 +10,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
+
         android:name=".APPApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -58,7 +60,8 @@
         </activity>
 
         <service
-            android:name=".ServiceDemo.MyService">
+            android:name=".ServiceDemo.MyService"
+            android:process=":test">
         </service>
 
         <activity android:name=".ServiceDemo.ServiceActivity">
